@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Lane</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Memory Lane</h1>
+        <div id="photoContainer">
+            <img id="photo" src="photo1.jpg" alt="Memory Photo">
+            <p id="photoDescription">This is a description of the first memory.</p>
+        </div>
+        <button id="backBtn">Back to Menu</button>
+    </div>
+    <script>
+        const photos = [
+            { src: 'photo1.jpg', description: 'This is a description of the first memory.' },
+            { src: 'photo2.jpg', description: 'This is a description of the second memory.' },
+            { src: 'photo3.jpg', description: 'This is a description of the third memory.' }
+        ];
+        let currentIndex = 0;
+
+        function changePhoto() {
+            currentIndex = (currentIndex + 1) % photos.length;
+            document.getElementById('photo').src = photos[currentIndex].src;
+            document.getElementById('photoDescription').innerText = photos[currentIndex].description;
+        }
+
+        setInterval(changePhoto, 3000); // Change photo every 3 seconds
+
+        document.getElementById('backBtn').onclick = function() {
+            window.location.href = 'menu.html';
+        };
+    </script>
+</body>
+</html>
